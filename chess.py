@@ -8,11 +8,11 @@ model = project.version(1).model
 pts = []  # Initialize pts as an empty list
 
 # infer on a local image
-result = model.predict("Chessboard3.jpeg").json()
+result = model.predict("Chessboard2.jpg").json()
 
 # Extract predictions
 predictions = result.get('predictions', [])
-img = cv2.imread("Chessboard3.jpeg")
+img = cv2.imread("Chessboard2.jpg")
 # Print coordinates
 for prediction in predictions:
     # If you want to print all the points, uncomment the following lines

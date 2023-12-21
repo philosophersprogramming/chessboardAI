@@ -1,0 +1,9 @@
+name: chesstorch
+channels:
+  - defaults
+dependencies:
+  - pytorch::pytorch
+  - torchaudio
+  - torchvision
+  - ultralytics
+prefix: /Users/akash/miniconda3/envs/chesstorch

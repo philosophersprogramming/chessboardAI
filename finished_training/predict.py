@@ -4,7 +4,8 @@ from ultralytics import YOLO
 model = YOLO('best.onnx')
 
 # Define path to the image file
-source = '/Users/akash/Source/chessAI/Chessboard_Recognition/images/Chessboard2.jpg'
+source = '/Users/akash/Source/chessAI/Chessboard_Recognition/images/Chessboard4.jpeg'
 
 # Run inference on the source
 results = model(source, save=True)  # list of Results objects
+print(results[0].tojson())

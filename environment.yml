@@ -7,3 +7,4 @@ dependencies:
   - torchvision
   - ultralytics
 prefix: /Users/akash/miniconda3/envs/chesstorch
+# do conda config --append channels conda-forge before running conda env create -f environment.yml

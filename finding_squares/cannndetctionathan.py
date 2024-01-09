@@ -1,60 +1,13 @@
-from roboflow import Roboflow
-import numpy as np
-import cv2
-from collections import defaultdict
 import sys
 import math
 import cv2
-rf = Roboflow(api_key="6Lj0kbooA01sIh9Mq61a")
-project = rf.workspace().project("chessboard-segmentation")
-model = project.version(1).model
-pts = []  # Initialize pts as an empty list
+import numpy as np
+from collections import defaultdict
 
-# infer on a local image
-result = model.predict("/Users/akash/Source/chessAI/Chessboard_Recognition/images/Chessboard2.jpg").json()
-
-# Extract predictions
-predictions = result.get('predictions', [])
-img = cv2.imread("/Users/akash/Source/chessAI/Chessboard_Recognition/images/Chessboard2.jpg")
-# Print coordinates
-for prediction in predictions:
-    # If you want to print all the points, uncomment the following lines
-    points = prediction.get('points', [])
-    for point in points:
-        point_x = point['x']
-        point_y = point['y']
-        print(f"  Point X: {point_x}, Point Y: {point_y}")
-        pts.append([point_x, point_y])
-
-# Save an image annotated with your predictions
-model.predict("Chessboard.jpg").save("prediction.jpg")
-
-# Convert pts to numpy array for further processing
-pts = np.array(pts, dtype=np.int32)
-
-# Check if there are enough points
-if len(pts) >= 0:
-    # Calculate bounding rectangle
-    rect = cv2.boundingRect(pts)
-    x, y, w, h = rect
-    cropped = img[y:y+h, x:x+w].copy()
-    mask = np.zeros(cropped.shape[:2], np.uint8)
-    cv2.drawContours(mask, [pts], -1, (255, 255, 255), -1, cv2.LINE_AA)
-
-    # (3) do bit-op
-    dst = cv2.bitwise_and(cropped, cropped, mask=mask)
-
-    # (4) add the white background
-    bg = np.ones_like(cropped, np.uint8) * 255
-    cv2.bitwise_not(bg, bg, mask=mask)
-    dst2 = bg + dst
-
-    cv2.imwrite("cropped.png", cropped)
-else:
-    print("Error: Not enough points for bounding rectangle.")
 
 def main(argv):
-    filename = 'cropped.png'
+    filename = '/Users/akash/Source/chessAI/Chessboard_Recognition/finished_training/cropped.png'
+    
     # Loads an image
     src = cv2.imread(cv2.samples.findFile(filename), cv2.IMREAD_GRAYSCALE)
     src = cv2.resize(src, (0, 0), fx=0.75, fy=0.75)
@@ -65,7 +18,7 @@ def main(argv):
         return -1
     
     # Canny Edge Transformation
-    dst = cv2.Canny(src, 50, 200, None, 3)
+    dst = cv2.Canny(src, 50, 160, None, 3)
     
     # Copy edges to the images that will display the results in BGR
     cdst = cv2.cvtColor(dst, cv2.COLOR_GRAY2BGR)    
@@ -86,28 +39,59 @@ def main(argv):
 
                 pt1 = (int(x0 + 1000*(-b)), int(y0 + 1000*(a)))
                 pt2 = (int(x0 - 1000*(-b)), int(y0 - 1000*(a)))
-                # cv2.line(cdst, pt1, pt2, (0,255 * i,255), 1, cv2.LINE_AA)
+                cv2.line(cdst, pt1, pt2, (0,255 * i,255), 1, cv2.LINE_AA)
     
     intersections = []
     for line1 in segmented[0]:
         for line2 in segmented[1]:
             intersections.append(get_intersection(line1, line2))
-            pass
     
-    ordered_intersections = {}
-    for intersection in intersections:
-        print(intersection)
-        x = intersection[0][0]
-        y = intersection[0][1]
+    # ordered_intersections = {}
+    # for intersection in intersections:
+    #     print(intersection)
+    #     x = intersection[0][0]
+    #     y = intersection[0][1]
         
-        xheat = math.floor((x / 1000) * 10)
-        yheat = math.floor((y / 1000) * 10)
+    #     xheat = math.floor((x / 1000) * 10)
+    #     yheat = math.floor((y / 1000) * 10)
 
-        dot = xheat + yheat
-        if not dot in ordered_intersections.keys():
-         ordered_intersections[dot] = []
-        cv2.circle(cdst, intersection[0], 8, (25 * dot, 25 * dot, 255), 1)
+    #     dot = xheat + yheat
+    #     if not dot in ordered_intersections.keys():
+    #      ordered_intersections[dot] = []
+    #     cv2.circle(cdst, intersection[0], 8, (25 * dot, 25 * dot, 255), 1)
+    arr = np.array(intersections, dtype=np.float32)
+    print(intersections)
+    criteria = ((cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER), 10, 1.0)
+    attempts = 10
+    flags = cv2.KMEANS_RANDOM_CENTERS
+
+    _, _, centers = cv2.kmeans(arr, 81, None, criteria, attempts, flags)
+    centers = sort_intersections(centers)
     
+    # show the centers/intersections of the board
+    for row in centers:
+        for center in row:
+            print(center)
+            cv2.circle(cdst, (int(center[0]), int(center[1])), 9, (255, 255, 0), 1)
+    
+    
+    # store each tile into the out folder.
+    for i in range(8):
+        for j in range(8):
+            x1, y1 = centers[i][j]
+            x2, y2 = centers[i][j + 1]
+            x3, y3 = centers[i + 1][j]
+            x4, y4 = centers[i + 1][j + 1]
+            
+            top_left_x = int(min([x1,x2,x3,x4]))
+            top_left_y = int(min([y1,y2,y3,y4]))
+            bot_right_x = int(max([x1,x2,x3,x4]))
+            bot_right_y = int(max([y1,y2,y3,y4]))
+            
+            cv2.imwrite(f"out/{j * 8 + i}.jpg", cdst[top_left_y:bot_right_y + 1, top_left_x:bot_right_x + 1])
+            
+
+
     cv2.imshow("Source", src)
     cv2.imshow("Detected Lines (in red) - Standard Hough Line Transform", cdst)
     
@@ -127,14 +111,23 @@ def segment_by_angle_kmeans(lines):
     pts = np.array([[np.cos(2 * angle), np.sin(2 * angle)] for angle in angles], dtype=np.float32)
     _, labels, center = cv2.kmeans(pts, 2, None, criteria, attempts, flags)
     labels = labels.reshape(-1)
-    print(labels)
-    print(center)
+    # print(labels)
+    # print(center)
     
     segmented = defaultdict(list)
     for k, line in enumerate(lines):
         segmented[labels[k]].append(line)
     segmented = list(segmented.values())
     return segmented
+    
+def sort_intersections(centers):
+    centers = centers[centers[:, 0].argsort()]
+    centers = centers.reshape(9, 9, 2)
+    
+    for i in range(len(centers)):
+        row = centers[i]
+        centers[i] = row[row[:, 1].argsort()]
+    return centers
     
 def get_intersection(line1, line2):
     rho1, theta1 = line1[0]

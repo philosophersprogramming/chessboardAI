@@ -2,7 +2,7 @@ from roboflow import Roboflow
 import numpy as np
 import cv2
 
-rf = Roboflow(api_key="oJuRryX26YnPAS1bFU4z")
+rf = Roboflow(api_key="6Lj0kbooA01sIh9Mq61a")
 project = rf.workspace().project("chessboard-segmentation")
 model = project.version(1).model
 pts = []  # Initialize pts as an empty list

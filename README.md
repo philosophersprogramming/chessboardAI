@@ -10,8 +10,8 @@
 ## Code that is currently working that you can try: 
 - predict.py in finished_training works with a given image path it will crop to the chessboard and output cropped.png
 - intersectionvthree.py contains the code to find the intersections
-- box.py and finds the intersection and groups them into boxs with the labels of chess cordinates
-
+- box.py finds the intersection and groups them into boxs with the labels of chess coordinates
+- boxout.py does exactly what box.py does except it outputs each Individual square as it's own image with coordinates
 ## Recommendation on how to run on other machines:
 1. install annaconda or miniconda(smaller verison)
 

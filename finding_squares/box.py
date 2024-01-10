@@ -16,8 +16,9 @@ def find_chessboard_intersections(image_path, rows, cols):
 
     def grid_to_chess_coordinates(row, col):
         letters = 'abcdefgh'
-        x_coord = letters[(col - 1) % len(letters)]  # Start at 'a'
-        y_coord = str(rows - row)  # Adjust the row value
+        numbers = '12345678'  # Adjust to match the number of rows
+        x_coord = letters[col - 1]
+        y_coord = numbers[rows - row]
         return f"{x_coord}{y_coord}"
 
     if lines is not None:
@@ -36,19 +37,19 @@ def find_chessboard_intersections(image_path, rows, cols):
     # Find intersections in a grid pattern
     intersections = []
 
-    for i in range(rows - 1):
-        for j in range(cols - 1):
-            x1 = int((image.shape[1] / (cols - 1)) * j)
-            y1 = int((image.shape[0] / (rows - 1)) * i)
+    for i in range(rows):
+        for j in range(cols):
+            x1 = int((image.shape[1] / cols) * j)
+            y1 = int((image.shape[0] / rows) * i)
 
-            x2 = int((image.shape[1] / (cols - 1)) * (j + 1))
-            y2 = int((image.shape[0] / (rows - 1)) * i)
+            x2 = int((image.shape[1] / cols) * (j + 1))
+            y2 = int((image.shape[0] / rows) * i)
 
-            x3 = int((image.shape[1] / (cols - 1)) * (j + 1))
-            y3 = int((image.shape[0] / (rows - 1)) * (i + 1))
+            x3 = int((image.shape[1] / cols) * (j + 1))
+            y3 = int((image.shape[0] / rows) * (i + 1))
 
-            x4 = int((image.shape[1] / (cols - 1)) * j)
-            y4 = int((image.shape[0] / (rows - 1)) * (i + 1))
+            x4 = int((image.shape[1] / cols) * j)
+            y4 = int((image.shape[0] / rows) * (i + 1))
 
             intersections.append([[x1, y1], [x2, y2], [x3, y3], [x4, y4]])
 
@@ -58,7 +59,7 @@ def find_chessboard_intersections(image_path, rows, cols):
             # Label the boxes with chess coordinates
             center_x = (x1 + x3) // 2
             center_y = (y1 + y3) // 2
-            chess_coordinates = grid_to_chess_coordinates(i + 1, j + 1)  # Start at 'a'
+            chess_coordinates = grid_to_chess_coordinates(i + 1, j + 1)
             cv2.putText(lines_image, chess_coordinates, (center_x, center_y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
     print(len(intersections))
@@ -69,8 +70,8 @@ def find_chessboard_intersections(image_path, rows, cols):
 
 # Specify the path to your image and the number of rows and columns
 image_path = '/Users/akash/Source/chessAI/Chessboard_Recognition/roboflow_api/cropped.png'
-rows = 9  # Adjust this value based on your chessboard
-cols = 9  # Adjust this value based on your chessboard
+rows = 8  # Adjust this value based on your chessboard
+cols = 8  # Adjust this value based on your chessboard
 
 # Call the function to find chessboard intersections
 find_chessboard_intersections(image_path, rows, cols)

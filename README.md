@@ -2,8 +2,8 @@
 
 - The finding_squares folder contains methods to find which square is which. 
 - The model_training folder contains training code for the chessboard cropping algorithm using Yolov8
-- The finished_training folder contains the trained chessboard cropping with weights for the Yolov8 modle
-- roboflow_api contains the chessboard cropping algorith using the roboflow's api 
+- The finished_training folder contains the trained chessboard cropping with weights for the Yolov8 Model
+- roboflow_api contains the chessboard cropping algorith using the Roboflow's api 
 - Chessboardseg contains the training dataset for the chessboard cropping algorithm
 
 
@@ -15,7 +15,7 @@
 ## Recommendation on how to run on other machines:
 1. install annaconda or miniconda(smaller verison)
 
-2. Run the follwing command in the directory with enviroment.yaml
+2. Run the follwing command in the directory with environment.yaml
  ```conda env create -f environment.yml```
 
 3. Run any of the code that is listed under currently working

@@ -4,7 +4,7 @@
 - The model_training folder contains training code for the chessboard cropping algorithm using Yolov8
 - The finished_training folder contains the trained chessboard cropping with weights for the Yolov8 Model
 - roboflow_api contains the chessboard cropping algorith using the Roboflow's api 
-- Chessboardseg contains the training dataset for the chessboard cropping algorithm
+- repostory for the training dataset for the chessboard cropping: https://universe.roboflow.com/steven-lt9bf/chessboard-segmentation
 
 
 ## Code that is currently working that you can try: 

@@ -69,7 +69,7 @@ def find_chessboard_intersections(image_path, rows, cols):
     cv2.destroyAllWindows()
 
 # Specify the path to your image and the number of rows and columns
-image_path = '/Users/akash/Source/chessAI/Chessboard_Recognition/roboflow_api/cropped.png'
+image_path = '/Users/akash/Source/chessAI/Chessboard_Recognition/Cropping_Chessboard/roboflow_api/cropped.png'
 rows = 8  # Adjust this value based on your chessboard
 cols = 8  # Adjust this value based on your chessboard
 

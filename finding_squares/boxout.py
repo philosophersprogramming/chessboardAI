@@ -53,12 +53,19 @@ def find_chessboard_intersections(image_path, rows, cols, output_folder):
                 cv2.rectangle(lines_image, (x1, y1), (x3, y3), (255, 0, 0), 2)
 
                 # Label the boxes with chess coordinates
-                # center_x = (x1 + x3) // 2
-                # center_y = (y1 + y3) // 2
-                # cv2.putText(lines_image, chess_coordinates, (center_x, center_y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-    # cv2.imshow("Detected Lines", lines_image)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+                center_x = (x1 + x3) // 2
+                center_y = (y1 + y3) // 2
+                cv2.putText(lines_image, chess_coordinates, (center_x, center_y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
+    cv2.imshow("Detected Lines", lines_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
+# Specify the path to your image, the number of rows and columns, and the output folder
+image_path = '/Users/akash/Source/chessAI/Chessboard_Recognition/Cropping_Chessboard/roboflow_api/cropped.png'
+rows = 8  # Adjust this value based on your chessboard
+cols = 8  # Adjust this value based on your chessboard
+output_folder = 'out/'  # Change this to your desired output folder
 
+# Call the function to find chessboard intersections and save individual box images
+find_chessboard_intersections(image_path, rows, cols, output_folder)

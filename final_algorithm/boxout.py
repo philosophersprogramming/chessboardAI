@@ -50,7 +50,7 @@ def find_chessboard_intersections(image_path, rows, cols, output_folder):
                 cv2.imwrite(output_path, box_image)
 
                 # Draw rectangles (boxes) using the four corners
-                cv2.rectangle(lines_image, (x1, y1), (x3, y3), (255, 0, 0), 2)
+                # cv2.rectangle(lines_image, (x1, y1), (x3, y3), (255, 0, 0), 2)
 
                 # Label the boxes with chess coordinates
                 # center_x = (x1 + x3) // 2

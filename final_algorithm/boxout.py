@@ -1,10 +1,10 @@
 import cv2
-import numpy as np
+#import numpy as np
 import os
 
 def find_chessboard_intersections(image_path, rows, cols, output_folder):
     image = cv2.imread(image_path, cv2.IMREAD_COLOR)
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     # blurred = cv2.GaussianBlur(gray, (5, 5), 0)
     # _, thresh = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     # edges = cv2.Canny(thresh, 30, 150, apertureSize=3)
@@ -30,14 +30,14 @@ def find_chessboard_intersections(image_path, rows, cols, output_folder):
             x1 = int((image.shape[1] / cols) * j)
             y1 = int((image.shape[0] / rows) * i)
 
-            x2 = int((image.shape[1] / cols) * (j + 1))
-            y2 = int((image.shape[0] / rows) * i)
+            # x2 = int((image.shape[1] / cols) * (j + 1))
+            # y2 = int((image.shape[0] / rows) * i)
 
             x3 = int((image.shape[1] / cols) * (j + 1))
             y3 = int((image.shape[0] / rows) * (i + 1))
 
-            x4 = int((image.shape[1] / cols) * j)
-            y4 = int((image.shape[0] / rows) * (i + 1))
+            # x4 = int((image.shape[1] / cols) * j)
+            # y4 = int((image.shape[0] / rows) * (i + 1))
 
             # Crop the box from the original image
             box_image = image[y1:y3, x1:x3]

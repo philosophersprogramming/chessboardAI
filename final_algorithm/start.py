@@ -2,7 +2,7 @@ import time
 from crop import *
 from boxout import *
 start = time.time()
-crop("/Users/akash/Source/chessAI/Chessboard_Recognition/images/board1.jpg")
+crop("../images/board1.jpg")
 image_path = 'cropped.png'
 rows = 8  # Adjust this value based on your chessboard
 cols = 8  # Adjust this value based on your chessboard

@@ -2,7 +2,7 @@ import time
 from crop import *
 from boxout import *
 start = time.time()
-crop("../images/board7.jpg")
+crop("../images/board8.jpg")
 image_path = 'cropped.png'
 rows = 8  # Adjust this value based on your chessboard
 cols = 8  # Adjust this value based on your chessboard

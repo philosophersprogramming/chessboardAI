@@ -5,7 +5,7 @@ import json
 
 def crop(file):
 # Load a pretrained YOLOv8n model
-    model = YOLO('weights/cropping/best.onnx', task='detect')
+    model = YOLO('weights/cropping/best.pt', task='detect')
 
     # Define path to the image file
     source = file

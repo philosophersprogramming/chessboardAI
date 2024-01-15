@@ -4,7 +4,7 @@ import cv2
 import json
 
 # Load a pretrained YOLOv8n model
-model = YOLO('/Users/akash/Source/chessAI/Chessboard_Recognition/finished_training/weights/best.onnx')
+model = YOLO('/Users/akash/Source/chessAI/Chessboard_Recognition/finished_training/weights/best.pt')
 
 # Define path to the image file
 source = '/Users/akash/Source/chessAI/Chessboard_Recognition/images/chessboard6.jpg'

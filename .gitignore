@@ -1,9 +1,12 @@
 **/Chessboardseg
 **/runs
-**/Data_1
-**/Data_2
+**/chess_piecesv3
 **/__pycache__
 final_algorithm/__pycache__/boxout.cpython-311.pyc
 final_algorithm/__pycache__/crop.cpython-311.pyc
 **/out
 **/cropped.png
+**/Training_dataset
+
+**/.DS_Store
+**/chess_piece.v1i.folder.zip

@@ -20,6 +20,6 @@
 
 2. Run the follwing command in the directory with environment.yaml
  ```conda env create -f environment.yml```
-
+    ```conda config --append channels conda-forge```
 3. Run any of the code that is listed under currently working
 

@@ -5,5 +5,5 @@ model.train(data="/Users/akash/Source/chessAI/Chessboard_Recognition/Chessboards
 # get the dataset from https://universe.roboflow.com/steven-lt9bf/chessboard-segmentation
 metrics = model.val()
 results = model("/Users/akash/Source/chessAI/Chessboard_Recognition/images/Chessboard2.jpg", save=True)
-model.export(format='onnx')
+model.export(format='engine')
 

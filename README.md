@@ -18,7 +18,7 @@
 ## Recommendation on how to run on other machines:
 1. install annaconda or miniconda(smaller verison)
 
-2. Run the follwing command in the directory with environment.yaml
+2. Run the follwing commands in the directory with environment.yaml
  
     ```conda config --append channels conda-forge```
     ```conda env create -f environment.yml```

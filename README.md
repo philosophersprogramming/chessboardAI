@@ -20,8 +20,8 @@
 
 2. Run the follwing commands in the directory with environment.yaml
  
-    ```conda config --append channels conda-forge```
-    ```conda env create -f environment.yml```
-    ```conda activate chesstorch```
+   1. run  ```conda config --append channels conda-forge```
+   2. run ```conda env create -f environment.yml```
+   3. run this command every time you open a new shell```conda activate chesstorch``` 
 3. Run any of the code that is listed under currently working
 

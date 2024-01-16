@@ -1,6 +1,7 @@
 name: chesstorch
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - pytorch::pytorch
   - torchaudio

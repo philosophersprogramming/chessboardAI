@@ -20,7 +20,12 @@
 
 2. Run the follwing commands in the directory with environment.yaml
  
-   1. run ```conda env create -f environment.yml```
+   1. run ```conda env create -f environment.yml``` for MacOS or ```conda env create -f linux_environment.yml``` for linux computers
    2. run this command every time you open a new shell```conda activate chesstorch``` 
 3. Run any of the code that is listed under currently working
+
+
+
+### Unrelated: how to export conda environment
+```conda env export  --from-history > linux_environment.yml```
 

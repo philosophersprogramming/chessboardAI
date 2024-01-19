@@ -1,4 +1,4 @@
-name: chesstorch
+name: chessdong
 channels:
   - defaults
 dependencies:

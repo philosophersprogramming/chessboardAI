@@ -26,8 +26,20 @@ def print_chessboard(chessboard):
 def move_piece(chessboard, from_square, to_square, move_list):
     from_row, from_col = 8 - int(from_square[1]), ord(from_square[0]) - ord('a')
     to_row, to_col = 8 - int(to_square[1]), ord(to_square[0]) - ord('a')
-    chessboard[to_row][to_col] = chessboard[from_row][from_col]
+
+    piece_to_move = chessboard[from_row][from_col]
+
+    # Normal move without pawn promotion
+    chessboard[to_row][to_col] = piece_to_move
     chessboard[from_row][from_col] = ' '
+
+    # Check if the piece is a pawn reaching the last rank
+    if piece_to_move == '♙' and to_row == 0:
+        # Promote the white pawn to queen
+        chessboard[to_row][to_col] = '♕'
+    elif piece_to_move == '♟' and to_row == 7:
+        # Promote the black pawn to queen
+        chessboard[to_row][to_col] = '♛'
 
     # Save the current state of the chessboard after the move
     move_list.append([chessboard[i][:] for i in range(8)])
@@ -65,6 +77,6 @@ if __name__ == "__main__":
     print_chessboard(initial_chessboard)
 
          # Move a piece
-    move_piece(initial_chessboard, "a1", "a4", move_list)
-    print("\nAfter moving pawn from a1 to a4:")
+    move_piece(initial_chessboard, "a2", "a8", move_list)
+    print("\nAfter moving pawn from a2 to a8:")
     print_chessboard(initial_chessboard)

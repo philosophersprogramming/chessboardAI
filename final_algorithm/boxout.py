@@ -13,7 +13,7 @@ def find_chessboard_intersections(image_path, rows, cols, output_folder):
     # lines = cv2.HoughLines(edges, 1, np.pi / 180, threshold=100)
 
     # # Create an image with only the detected lines
-    # lines_image = image.copy()
+    lines_image = image.copy()
 
     def grid_to_chess_coordinates(row, col):
         letters = 'abcdefgh'
@@ -49,15 +49,15 @@ def find_chessboard_intersections(image_path, rows, cols, output_folder):
             cv2.imwrite(output_path, box_image)
 
                 # Draw rectangles (boxes) using the four corners
-                # cv2.rectangle(lines_image, (x1, y1), (x3, y3), (255, 0, 0), 2)
+            cv2.rectangle(lines_image, (x1, y1), (x3, y3), (255, 0, 0), 2)
 
                 # Label the boxes with chess coordinates
-                # center_x = (x1 + x3) // 2
-                # center_y = (y1 + y3) // 2
-                # cv2.putText(lines_image, chess_coordinates, (center_x, center_y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-    # cv2.imshow("Detected Lines", lines_image)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+            center_x = (x1 + x3) // 2
+            center_y = (y1 + y3) // 2
+            font_size = 1.0  # Adjust the font size as needed
+            cv2.putText(lines_image, chess_coordinates, (center_x, center_y), cv2.FONT_HERSHEY_SIMPLEX, font_size, (0, 255, 0), 2)
+    cv2.imwrite("Detected_Lines.png", lines_image)
+
 
 
 

@@ -33,6 +33,5 @@ def pieces(path):
                 counterwhite+= 1
             if (probs == 1) :
                  print("blank square")
-    print("found " + str(counterblack) + " black pieces and found " + str(counterwhite) + " white pieces")
-
         
+    print("found " + str(counterblack) + " black pieces and found " + str(counterwhite) + " white pieces")

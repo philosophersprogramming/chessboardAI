@@ -18,8 +18,9 @@
 ## Recommendation on how to run on other machines:
 1. install annaconda or miniconda(smaller verison)
 
-2. Run the follwing command in the directory with environment.yaml
- ```conda env create -f environment.yml```
-
+2. Run the follwing commands in the directory with environment.yaml
+ 
+   1. run ```conda env create -f environment.yml```
+   2. run this command every time you open a new shell```conda activate chesstorch``` 
 3. Run any of the code that is listed under currently working
 

@@ -1,0 +1,9 @@
+name: chesstorch
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - conda-forge::ultralytics
+  - pytorch
+  - torchaudio
+  - torchvision

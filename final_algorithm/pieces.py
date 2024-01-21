@@ -10,7 +10,8 @@ def pieces(path):
     directory_path = path
 
     image_files = [f for f in os.listdir(directory_path) if f.endswith(('.png', '.jpg', '.jpeg'))]
-
+# Initialize an empty 2D array for pieces
+    pieces_array = [['' for _ in range(8)] for _ in range(8)]
 
     counterblack = 0
     counterwhite = 0
@@ -24,14 +25,35 @@ def pieces(path):
             # Ensure results is a list and not None
             probs = results[0].probs.top1
             names = results[0].names
+            row, col = extract_row_col_from_filename(image_file)
             print (str(probs) + str(names))
             if (probs == 0) :
                 print("black")
+                pieces_array[row][col] = 0
                 counterblack+=1
             if (probs == 2) :
                 print("white")
+                pieces_array[row][col] = 2
                 counterwhite+= 1
             if (probs == 1) :
+                 pieces_array[row][col] = 1
                  print("blank square")
         
     print("found " + str(counterblack) + " black pieces and found " + str(counterwhite) + " white pieces")
+    print("Pieces Array:")
+    for row in pieces_array:
+        print(row)
+def extract_row_col_from_filename(filename):
+    # Extracts row and column information from the chess position in the filename
+
+    # Assuming the filename is in the format "<column><row>.<extension>"
+    # For example, "a4.jpg", "b4.png"
+
+    # Extract column from the first character of the filename
+    col = ord(filename[0].lower()) - ord('a')
+
+    # Extract row from the second character of the filename
+    row = int(filename[1]) - 1
+
+    return row, col
+

@@ -1,18 +1,22 @@
-FROM continuumio/miniconda3
+FROM python:3.11
+
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+RUN pip install ultralytics
+
+RUN pip install flask
 
 WORKDIR /app
 
-# Create the environment:
-COPY linux_environment.yml .
-RUN conda env create -f linux_environment.yml
-COPY final_algorithm .
-
-SHELL ["conda", "run", "-n", "chesstorch", "/bin/bash", "-c"]
-
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "chesstorch", "python", "app.py"]
+COPY final_algorithm /app/
 
 EXPOSE 5000
-
-ENV PORT 5000
-# set hostname to localhost
+ENV PORT 3000
 ENV HOSTNAME "0.0.0.0"
+CMD [ "python", "./app.py" ]
+
+
+
+

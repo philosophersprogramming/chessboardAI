@@ -8,7 +8,7 @@
 
 
 ## Code that is mostly production ready
-- check the final_algorithm which contains a start.py file and modify the parmeters with your desire path for the image and run the code 
+- check the final_algorithm which contains App.py file and modify the parmeters with your desire path for the image and run the code 
 
 ## Code that is currently working that you can try : 
 - predict.py in finished_training works with a given image path it will crop to the chessboard and output cropped.png

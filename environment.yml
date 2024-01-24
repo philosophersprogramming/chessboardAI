@@ -1,10 +1,12 @@
 name: chesstorch
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - pytorch::pytorch
   - torchaudio
   - torchvision
-  - conda-forge::ultralytics
+  - ultralytics
+  - pip: 
+      - flask==3.0.1
 
-# do conda config --append channels conda-forge before running conda env create -f environment.yml

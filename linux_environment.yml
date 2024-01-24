@@ -7,3 +7,5 @@ dependencies:
   - pytorch
   - torchaudio
   - torchvision
+  - pip: 
+    - flask==3.0.1

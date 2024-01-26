@@ -8,22 +8,10 @@
 
 
 ## Code that is mostly production ready
-- check the final_algorithm which contains App.py file and modify the parmeters with your desire path for the image and run the code 
+- go the final_algorithm and run Not-optiimized or Nvidia depending on if you have Nvidia GPU
 
-## Code that is currently working that you can try : 
-- predict.py in finished_training works with a given image path it will crop to the chessboard and output cropped.png
-- intersectionvthree.py contains the code to find the intersections
-- box.py finds the intersection and groups them into boxs with the labels of chess coordinates
-- boxout.py does exactly what box.py does except it outputs each Individual square as it's own image with coordinates
 ## Recommendation on how to run on other machines:
-1. install annaconda or miniconda(smaller verison)
-
-2. Run the follwing commands in the directory with environment.yaml
- 
-   1. run ```conda env create -f environment.yml``` for MacOS or ```conda env create -f linux_environment.yml``` for linux computers
-   2. run this command every time you open a new shell```conda activate chesstorch``` 
-3. Run any of the code that is listed under currently working
-
+- run the docker container (Requires Nidia GPU)
 
 
 ### Unrelated: how to export conda environment

@@ -42,7 +42,7 @@ def pieces(path):
     for row in pieces_array:
         print(row)
     
-    return "found " + str(counterblack) + " black pieces and found " + str(counterwhite) + " white pieces"
+    return pieces_array
    
 def extract_row_col_from_filename(filename):
     # Extracts row and column information from the chess position in the filename

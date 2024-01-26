@@ -3,6 +3,7 @@ from crop import *
 from boxout import *
 from pieces import *
 
+
 def start(file):
     start = time.time()
     crop(file)

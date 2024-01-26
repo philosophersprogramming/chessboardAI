@@ -30,9 +30,16 @@ class ChessArrayComparator:
         file_char = chr(ord('a') + col)
         rank = 8 - row
         source_square = f"{file_char}{rank}"
+        color = "" 
+        if (new_value == 1): 
+         color = " white piece " 
+        elif (new_value == 2) :
+         color = " black piece " 
+       
+
         if old_value == 0:
-            return source_square
+            return source_square  + color
         elif new_value == 0:
-            return source_square
+            return source_square + color
         else:
             return None

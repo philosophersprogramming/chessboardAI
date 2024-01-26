@@ -29,14 +29,14 @@ def pieces(path):
             print (str(probs) + str(names))
             if (probs == 0) :
                 print("black")
-                pieces_array[row][col] = 2
+                pieces_array[7 - row][col] = 2
                 counterblack+=1
             if (probs == 2) :
                 print("white")
-                pieces_array[row][col] = 1
+                pieces_array[7 - row][col] = 1 
                 counterwhite+= 1
             if (probs == 1) :
-                 pieces_array[row][col] = 0
+                 pieces_array[7 - row][col] = 0 
                  print("blank square")
     print("Pieces Array:")
     for row in pieces_array:

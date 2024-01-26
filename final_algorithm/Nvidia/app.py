@@ -35,4 +35,7 @@ def upload_image():
     return jsonify(output)
 
 if __name__ == '__main__':
+    initial_array_path = 'initial_array.pkl'
+    if os.path.exists(initial_array_path):
+        os.remove(initial_array_path)
     app.run(debug=True, host='0.0.0.0', port=9081)

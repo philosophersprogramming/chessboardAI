@@ -40,6 +40,7 @@ def start(file):
 
     # If the initial array is checked and some pieces are moved, update the initial array
     if move:
+        initial_array = found
         # Save the updated initial array using pickle
         with open('initial_array.pkl', 'wb') as initial_file:
             pickle.dump(initial_array, initial_file)

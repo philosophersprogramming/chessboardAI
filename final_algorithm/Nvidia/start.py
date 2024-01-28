@@ -5,13 +5,13 @@ from pieces import *
 from compute import *
 import pickle
 def parse_strings(input_string, strings_to_exclude):
-        for s in strings_to_exclude:
-            input_string = input_string.replace(s, '')
+    for s in strings_to_exclude:
+        input_string = input_string.replace(s, '')
 
-        # Remove extra whitespaces resulting from removal of substrings
-        input_string = ' '.join(input_string.split())
+    # Remove all spaces
+    input_string = input_string.replace(' ', '')
 
-        return input_string
+    return input_string
 def start(file):
     start = time.time()
     crop(file)

@@ -16,7 +16,7 @@ RUN pip install flask
 
 WORKDIR /app
 
-COPY final_algorithm/Nvidia /app/
+COPY . /app/
 
 EXPOSE 9081
 ENV PORT 9081

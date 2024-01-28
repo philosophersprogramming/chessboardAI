@@ -4,7 +4,14 @@ from boxout import *
 from pieces import *
 from compute import *
 import pickle
+def parse_strings(input_string, strings_to_exclude):
+    for s in strings_to_exclude:
+        input_string = input_string.replace(s, '')
 
+    # Remove all spaces
+    input_string = input_string.replace(' ', '')
+
+    return input_string
 def start(file):
     start = time.time()
     crop(file)
@@ -37,6 +44,11 @@ def start(file):
 
     # Check the initial array once
     move = comparator.compare_and_update(found)
+    strings_to_exclude = ["from array 0", "from array 1"]
+
+
+    result = parse_strings(move, strings_to_exclude)
+
 
     # If the initial array is checked and some pieces are moved, update the initial array
     if move:
@@ -46,5 +58,5 @@ def start(file):
             pickle.dump(initial_array, initial_file)
 
     end = time.time()
-    output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + move
+    output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result
     return output

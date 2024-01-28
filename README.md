@@ -1,18 +1,61 @@
-# chessboard
+# chessboard Computer Vison 
 
-- The finding_squares folder contains methods to find which square is which. 
-- The model_training folder contains training code for the chessboard cropping algorithm using Yolov8
-- The finished_training folder contains the trained chessboard cropping with weights for the Yolov8 Model
-- roboflow_api contains the chessboard cropping algorith using the Roboflow's api 
-- repostory for the training dataset for the chessboard cropping: https://universe.roboflow.com/steven-lt9bf/chessboard-segmentation
+This program finds what pieces moved from an intial image of a chessboard that is given to it and updates the board as the next image containing the next move is given and only reports the change in moves from the images. The program can also be used with an AI (ex stockfish) moving the pieces on the actual board by giving the move that was played to program so that it will ignore that move as change on the image but still update what pieces have moved, so that it only reports the change that the player made to the AI. Note the images provided to this program have to be from a top angle view of the chessboard.
+
+## How to run?
+
+### Nvidia GPU (Faster Runtime)
+To run the program please check the docker file which contains the code to run it. Note the docker container requires a Nvidia GPU to work so please read the Nvidia guide https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html and install that then run ```docker run --gpus all IMAGENAME``` replacing IMAGENAME with whatever you called the image.
+
+1. install docker on your system https://docs.docker.com/engine/install/
+2. follow the guide at https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html  and install for your system. 
+3. run ```docker build -t chessai .``` in directory Nvidia containing the Dockerfile 
+4. run ```docker run --gpus all chessai```
+
+### CPU (Slower Runtime) 
+
+1. install docker on your system https://docs.docker.com/engine/install/ 
+2. run ```docker build -t chessai .``` in directory Not-optimized containing the Dockerfile 
+4. run ```docker run chessai```
 
 
-## Code that is mostly production ready
-- go the final_algorithm and run Not-optiimized or Nvidia depending on if you have Nvidia GPU
+## The API 
 
-## Recommendation on how to run on other machines:
-- run the docker container (Requires Nidia GPU)
+### Calling the API to grab the moves from the image example in python: 
+```
+import requests
 
+url = "http://localhost:9081/upload" # change to the server address
+
+payload = {}
+files=[
+  ('file',('NAMEOFFILE',open('FILEPATH','rb'),'image/jpeg')) # replace NAMEOFFILE with the name of the file and replace FILEPATH with the path to file
+]
+headers = {}
+
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
+
+print(response.text)
+```
+
+### Updating moves to not counted as changes in image (if your using an AI to move pieces)
+
+```
+import requests
+
+url = "http://localhost:9081/chessmove" # change to server address
+
+payload = {'move': 'd7d5'}
+files=[
+
+]
+headers = {}
+
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
+
+print(response.text)
+
+```
 
 ### Unrelated: how to export conda environment
 ```conda env export  --from-history > linux_environment.yml```

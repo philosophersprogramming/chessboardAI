@@ -1,7 +1,21 @@
 import pickle
 def received(move):
-    with open('initial_array.pkl', 'rb') as initial_file:
-        initial_array = pickle.load(initial_file)
+    try:
+        with open('initial_array.pkl', 'rb') as initial_file:
+            initial_array = pickle.load(initial_file)
+    except FileNotFoundError:
+        # If the file is not found, use the default initial array
+        initial_array = [
+            [2, 2, 2, 2, 2, 2, 2, 2],
+            [2, 2, 2, 2, 2, 2, 2, 2],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1]
+        ]
+
     def make_move(chessboard, move):
         from_row, from_col, to_row, to_col = 8 - int(move[1]) , ord(move[0]) - ord('a'), 8 - int(move[3]) , ord(move[2]) - ord('a')
 

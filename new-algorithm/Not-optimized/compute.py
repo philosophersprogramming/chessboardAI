@@ -8,9 +8,9 @@ class ChessArrayComparator:
         else:
             differences = self.find_differences(self.previous_array, new_array)
             move_source_squares = [
-                self.get_chess_movement(diff[0], diff[1],  self.previous_array, new_array)
+                self.get_chess_movement(diff[0], diff[1], diff[2], self.previous_array, new_array)
                 for diff in differences
-                if self.get_chess_movement(diff[0], diff[1],  self.previous_array, new_array) is not None
+                if self.get_chess_movement(diff[0], diff[1], diff[2], self.previous_array, new_array) is not None
             ]
 
             if not move_source_squares:

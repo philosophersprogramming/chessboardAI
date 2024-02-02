@@ -55,6 +55,25 @@ def chess_move():
         print(f"Error in /chessmove: {e}")
         return jsonify({'error': 'Internal server error'})
 
+@app.route('/gamestat', methods=['POST'])
+def gamestat():
+    # Get the form data from the request
+
+    # gameid = request.form.get('gameid', '')
+    # Access specific form fields
+    gamestats = request.form.get('reset', '')
+    
+    if gamestats.upper() == 'TRUE': 
+        print("RESETTING")
+        if os.path.exists(initial_array_path):
+            os.remove(initial_array_path)
+    
+    # Do something with the form data (e.g., print it)
+    print("Received form data - Text field:")
+    
+    # Return a response
+    return "Form data received successfully"
+
 if __name__ == '__main__':
     initial_array_path = 'initial_array.pkl'
     if os.path.exists(initial_array_path):

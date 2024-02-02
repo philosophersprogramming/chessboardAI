@@ -5,8 +5,6 @@ This program finds what pieces moved from an intial image of a chessboard that i
 ## How to run?
 
 ### Nvidia GPU (Faster Runtime)
-To run the program please check the docker file which contains the code to run it. Note the docker container requires a Nvidia GPU to work so please read the Nvidia guide https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html and install that then run ```docker run --gpus all IMAGENAME``` replacing IMAGENAME with whatever you called the image.
-
 1. install docker on your system https://docs.docker.com/engine/install/
 2. follow the guide at https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html  and install for your system. 
 3. run ```docker build -t chessai .``` in directory Nvidia containing the Dockerfile 

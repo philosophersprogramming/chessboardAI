@@ -48,7 +48,7 @@ def start(file):
 
 
     result = parse_strings(move, strings_to_exclude)
-
+    result = result.replace('\n', '')
 
     # If the initial array is checked and some pieces are moved, update the initial array
     if move:
@@ -58,5 +58,5 @@ def start(file):
             pickle.dump(initial_array, initial_file)
 
     end = time.time()
-    output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result
-    return output
+    print("It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result)
+    return result

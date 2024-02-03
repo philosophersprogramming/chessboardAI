@@ -34,6 +34,7 @@ def upload_image():
         # img.show()
 
         output = start(temp_filename)
+        print(output)
         return jsonify(output)
     except Exception as e:
         print(f"Error in /upload: {e}")

@@ -3,6 +3,7 @@ from crop import *
 from boxout import *
 from pieces import *
 from compute import *
+from chesscount import *
 import pickle
 def parse_strings(input_string, strings_to_exclude):
     for s in strings_to_exclude:
@@ -58,7 +59,8 @@ def start(file):
     # Save the updated initial array using pickle
         with open('initial_array.pkl', 'wb') as initial_file:
             pickle.dump(initial_array, initial_file)
-
+    chessai = chessmove(result, 20)
+    print(chessai)
     end = time.time()
     print("It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result)
-    return result
+    return chessai

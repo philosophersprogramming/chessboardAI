@@ -13,7 +13,7 @@ def parse_strings(input_string, strings_to_exclude):
     input_string = input_string.replace(' ', '')
 
     return input_string
-def start(file):
+def start(file, strength):
     
     start = time.time()
     crop(file)
@@ -59,7 +59,7 @@ def start(file):
     # Save the updated initial array using pickle
         with open('initial_array.pkl', 'wb') as initial_file:
             pickle.dump(initial_array, initial_file)
-    chessai = chessmove(result, 20)
+    chessai = chessmove(result, strength)
     print(chessai)
     end = time.time()
     print("It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result)

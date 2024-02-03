@@ -3,6 +3,10 @@ import chess.engine
 board = chess.Board()
 engine = chess.engine.SimpleEngine.popen_uci(r"/home/akash/stockfish/stockfish-ubuntu-x86-64-modern")
 
+def reset_board():
+    global board
+    board = chess.Board()
+
 def chessmove(move, depth):
     board.push_san(move)
     print(board)

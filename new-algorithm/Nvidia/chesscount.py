@@ -1,6 +1,8 @@
 import chess
 import chess.engine
+from received import *
 board = chess.Board()
+
 engine = chess.engine.SimpleEngine.popen_uci(r"/home/akash/stockfish/stockfish-ubuntu-x86-64-modern")
 
 def reset_board():
@@ -18,4 +20,5 @@ def chessmove(move, depth):
     board.push(best_move)
     print("Engine's Move:", best_move)
     print(board)
+    received(str(best_move))
     return str(best_move)

@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from PIL import Image
 from start import *
-from received import *
 import tempfile
 import os
 
@@ -33,27 +32,15 @@ def upload_image():
         # Process the image (you may want to do more meaningful processing here)
         # img = Image.open(file)
         # img.show()
-
-        output = start(temp_filename)
+        strength = int(request.form.get('strength', '20'))
+        print(strength)
+        output = start(temp_filename, strength)
+        print(output)
         return jsonify(output)
     except Exception as e:
         print(f"Error in /upload: {e}")
         return jsonify({'error': 'Internal server error'})
 
-@app.route('/chessmove', methods=['POST'])
-def chess_move():
-    try:
-        if request.method == 'POST':
-            data = request.form.get('move')
-
-            received(data)
-            
-            return f"Received chess moves: {data}"
-        else:
-            return "Invalid request method"
-    except Exception as e:
-        print(f"Error in /chessmove: {e}")
-        return jsonify({'error': 'Internal server error'})
 
 @app.route('/gamestat', methods=['POST'])
 def gamestat():
@@ -67,9 +54,9 @@ def gamestat():
         print("RESETTING")
         if os.path.exists(initial_array_path):
             os.remove(initial_array_path)
-    
+        reset_board()
     # Do something with the form data (e.g., print it)
-    print("Received form data - Text field:")
+    print("Resetted board")
     
     # Return a response
     return "Form data received successfully"

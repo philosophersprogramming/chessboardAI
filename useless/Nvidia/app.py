@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from PIL import Image
 from start import *
-from chesscount import *
 import tempfile
 import os
 

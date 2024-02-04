@@ -60,4 +60,4 @@ def start(file, strength):
     chessai = chessmove(result, strength)
     end = time.time()   
     output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result
-    return output
+    return chessai

@@ -52,7 +52,7 @@ def start(file, strength):
 
     result = parse_strings(move, strings_to_exclude)
     result = result.replace('\n', '')
-
+    print("move that was played"+ result)
     # # If the initial array is checked and some pieces are moved, update the initial array
     if move:
         initial_array = found

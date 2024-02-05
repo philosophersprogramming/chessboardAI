@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-model = YOLO('/home/akash/chessboard/new-algorithm/Not-optimized/weights/pieces/best.pt')
+model = YOLO('/home/akash/chessboard/final_algorithm/Not-optimized/weights/pieces/v3/best.pt')
 
 model.export(format='engine')
 

@@ -16,3 +16,4 @@ final_algorithm/__pycache__/crop.cpython-311.pyc
 **/Detected_Lines.png
 .env
 **initial_array.pkl
+.DS_Store

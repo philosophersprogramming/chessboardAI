@@ -2,6 +2,10 @@
 
 This program finds what pieces moved from an intial image of a chessboard and gives that move to stockfish which makes a move and returns that value.
 
+
+# Visual representation of piece detection model
+![Alt text](relative%20chessAImodel.png?raw=true "Title")
+
 ## How to run?
 
 ### Nvidia GPU (Faster Runtime)

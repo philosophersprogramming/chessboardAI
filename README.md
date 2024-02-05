@@ -4,7 +4,7 @@ This program finds what pieces moved from an intial image of a chessboard and gi
 
 
 # Visual representation of piece detection model
-![Alt text](relative%20chessAImodel.png?raw=true "Title")
+![Alt text](chessAImodel.png?raw=true "neutron app image")
 
 ## How to run?
 

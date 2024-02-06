@@ -41,14 +41,12 @@ def start(file, strength):
         ]
 
     # Create an instance of ChessArrayComparator
-    comparator = ChessArrayComparator(initial_array)
+    # comparator = ChessArrayComparator(initial_array)
 
     # Check the initial array once
-    move = comparator.compare_and_update(found)
-    strings_to_exclude = ["from array 0", "from array 1"]
+    move = findMove(initial_array, found, )
 
 
-    result = parse_strings(move, strings_to_exclude)
 
 
     # If the initial array is checked and some pieces are moved, update the initial array
@@ -57,7 +55,7 @@ def start(file, strength):
         # Save the updated initial array using pickle
         with open('initial_array.pkl', 'wb') as initial_file:
             pickle.dump(initial_array, initial_file)
-    chessai = chessmove(result, strength)
+    chessai = chessmove(move, strength)
     end = time.time()   
     output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result
     return chessai

@@ -11,7 +11,18 @@ def findMove(curBoard, newBoard, turn):
             if curBoard[i][j] != newBoard[i][j]:
                 differences.append((i, j))
     if len(differences) > 2:
-        pass
+        # check for white castling
+        if turn == 1:
+            if (0, 5) in differences:
+                return "o-o"
+            else:
+                return "o-o-o"
+        else:
+            if(7, 5) in differences:
+                return "o-o"
+            else:
+                return "o-o-o"
+            
     if len(differences) == 2:
         if curBoard[differences[0][0]][differences[0][1]] == turn:
             move += (digitToLetters[differences[0][1]] + str(8 - differences[0][0]))
@@ -19,11 +30,12 @@ def findMove(curBoard, newBoard, turn):
         else:
             move += (digitToLetters[differences[1][1]] + str(8 - differences[1][0]))
             move += (digitToLetters[differences[0][1]] + str(8 - differences[0][0]))
+    print("differences")
     print(differences)
     return move
             
 
-print(changeBoard([
+print(findMove([
             [2, 2, 2, 2, 2, 2, 2, 2],
             [2, 2, 2, 2, 2, 2, 2, 2],
             [0, 0, 0, 0, 0, 0, 0, 0],

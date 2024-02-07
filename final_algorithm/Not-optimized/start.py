@@ -44,7 +44,13 @@ def start(file, strength):
     # comparator = ChessArrayComparator(initial_array)
 
     # Check the initial array once
-    move = findMove(initial_array, found, )
+    # if playerIsWhite:
+    #     turn = 1
+    # else:
+    #     turn = 2
+    print(initial_array)
+    print(found)
+    move = findMove(initial_array, found, 1)
 
 
 
@@ -56,6 +62,6 @@ def start(file, strength):
         with open('initial_array.pkl', 'wb') as initial_file:
             pickle.dump(initial_array, initial_file)
     chessai = chessmove(move, strength)
-    end = time.time()   
+    end = time.time()
     output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result
     return chessai

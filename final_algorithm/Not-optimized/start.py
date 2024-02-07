@@ -49,7 +49,7 @@ def start(file, strength):
 
 
     result = parse_strings(move, strings_to_exclude)
-
+    result = result.replace('\n', '')
 
     # If the initial array is checked and some pieces are moved, update the initial array
     if move:
@@ -58,6 +58,6 @@ def start(file, strength):
         with open('initial_array.pkl', 'wb') as initial_file:
             pickle.dump(initial_array, initial_file)
     chessai = chessmove(result, strength)
-    end = time.time()   
-    output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result
+    end = time.time()
+    print("It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result)
     return chessai

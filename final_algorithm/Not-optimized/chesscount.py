@@ -3,7 +3,7 @@ import chess.engine
 from received import *
 board = chess.Board()
 
-engine = chess.engine.SimpleEngine.popen_uci(r"/home/akash/stockfish/stockfish-ubuntu-x86-64-modern")
+engine = chess.engine.SimpleEngine.popen_uci(r"/usr/games/stockfish")
 
 def reset_board():
     global board

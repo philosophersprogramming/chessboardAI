@@ -17,6 +17,7 @@ def setPlayerTurn(isWhite, depth):
         # Apply the engine's move to the board
         board.push(best_move)
 
+
 def reset_board():
     global board
     board = chess.Board()

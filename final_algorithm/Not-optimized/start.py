@@ -61,7 +61,9 @@ def start(file, strength):
         # Save the updated initial array using pickle
         with open('initial_array.pkl', 'wb') as initial_file:
             pickle.dump(initial_array, initial_file)
+
     chessai = chessmove(move, strength)
     end = time.time()
-    output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + result
+    output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + move
+    print(output)
     return chessai

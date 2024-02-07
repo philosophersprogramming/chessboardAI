@@ -1,6 +1,9 @@
 import chess
 import chess.engine
 from received import *
+
+# testing
+# chess.STARTING_BOARD_FEN = ""
 board = chess.Board()
 
 engine = chess.engine.SimpleEngine.popen_uci(r"/usr/local/bin/stockfish")

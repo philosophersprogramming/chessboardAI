@@ -10,18 +10,24 @@ def findMove(curBoard, newBoard, turn):
         for j in range(8):
             if curBoard[i][j] != newBoard[i][j]:
                 differences.append((i, j))
+    print("differences")
+    print(differences)
     if len(differences) > 2:
         # check for white castling
-        if turn == 1:
-            if (0, 5) in differences:
+        if turn == 2:
+            if differences == [(0, 4), (0, 5), (0, 6), (0, 7)]:
                 return "o-o"
-            else:
+            elif differences == [(0, 0), (0, 2), (0, 3), (0, 4)]:
                 return "o-o-o"
+            else:
+                "bad chess ai beta needs spanking toNIGHT"
         else:
-            if(7, 5) in differences:
+            if differences == [(7, 4), (7, 5), (7, 6), (7, 7)]:
                 return "o-o"
-            else:
+            elif differences == [(7, 0), (7, 2), (7, 3), (7, 4)]:
                 return "o-o-o"
+            else:
+                "bad chess ai beta needs spanking toNIGHT"
             
     if len(differences) == 2:
         if curBoard[differences[0][0]][differences[0][1]] == turn:
@@ -30,8 +36,7 @@ def findMove(curBoard, newBoard, turn):
         else:
             move += (digitToLetters[differences[1][1]] + str(8 - differences[1][0]))
             move += (digitToLetters[differences[0][1]] + str(8 - differences[0][0]))
-    print("differences")
-    print(differences)
+    
     return move
             
 
@@ -43,17 +48,17 @@ print(findMove([
             [0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0],
             [1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1]
+            [1, 1, 1, 1, 1, 0, 0, 1]
         ],
         [
             [2, 2, 2, 2, 2, 2, 2, 2],
             [2, 2, 2, 2, 2, 2, 2, 2],
             [0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0],
-            [1, 1, 1, 1, 0, 1, 1, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1]
+            [0, 0, 0, 0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 0, 1, 1, 0]
         ], 1))
 
 # class ChessArrayComparator:

@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 import os
 
-model = YOLO('weights/pieces/v2/best.pt')
+model = YOLO('weights/pieces/v4/best.pt')
 def pieces(path):
 # Load a pretrained YOLOv8n model
     

@@ -6,7 +6,7 @@ from received import *
 # chess.STARTING_BOARD_FEN = ""
 board = chess.Board()
 
-engine = chess.engine.SimpleEngine.popen_uci(r"/usr/local/bin/stockfish")
+engine = chess.engine.SimpleEngine.popen_uci(r"/opt/homebrew/bin/stockfish")
 
 
 def setPlayerTurn(isWhite, depth):

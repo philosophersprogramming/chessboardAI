@@ -9,13 +9,13 @@ board = chess.Board()
 engine = chess.engine.SimpleEngine.popen_uci(r"/opt/homebrew/bin/stockfish")
 
 
-def setPlayerTurn(isWhite, depth):
-    if not isWhite:
-        result = engine.play(board, chess.engine.Limit(depth=depth))  # Set a time limit for the engine's move
-        best_move = result.move
+# def setPlayerTurn(isWhite, depth):
+#     if not isWhite:
+#         result = engine.play(board, chess.engine.Limit(depth=depth))  # Set a time limit for the engine's move
+#         best_move = result.move
     
-        # Apply the engine's move to the board
-        board.push(best_move)
+#         # Apply the engine's move to the board
+#         board.push(best_move)
 
 
 def reset_board():

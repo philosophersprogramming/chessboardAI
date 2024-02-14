@@ -32,9 +32,9 @@ def upload_image():
         # Process the image (you may want to do more meaningful processing here)
         # img = Image.open(file)
         # img.show()
-        strength = int(request.form.get('strength', '20'))
-        print(strength)
-        output = start(temp_filename, strength)
+ 
+
+        output = start(temp_filename)
         print(output)
         return jsonify(output)
     except Exception as e:

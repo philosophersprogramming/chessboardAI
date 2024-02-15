@@ -1,7 +1,6 @@
 # Chessboard AI 
 
-This program finds what pieces moved from an intial image of a chessboard and gives that move to stockfish which makes a move and returns that value.
-
+This program finds what pieces moved from an intial image of a chessboard and gives that move to Leela Chess Zero which is Open source neural network based chess engine (https://lczero.org/) with Maias Weights (https://github.com/CSSLab/maia-chess): 
 
 # Visual representation of piece detection model
 ![Alt text](chessAImodel.png?raw=true "neutron app image")
@@ -17,7 +16,7 @@ This program finds what pieces moved from an intial image of a chessboard and gi
 ### CPU (Slower Runtime) 
 
 1. install docker on your system https://docs.docker.com/engine/install/ 
-2. run ```docker build -t chessai .``` in directory Not-optimized containing the Dockerfile 
+2. run ```docker build -t chessai .``` in directory Cpu directory containing the Dockerfile 
 4. run ``` docker run  -p 9081:9081 --gpus all chessai```
 
 

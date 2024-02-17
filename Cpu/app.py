@@ -1,13 +1,28 @@
 from flask import Flask, request, jsonify
-from PIL import Image
 from start import *
 import tempfile
 import os
+from os import environ as env
+
+from dotenv import load_dotenv, find_dotenv
+from authlib.integrations.flask_oauth2 import ResourceProtector
+from validator import Auth0JWTBearerTokenValidator
+
+require_auth = ResourceProtector()
+load_dotenv(find_dotenv())
+DOMAIN = env.get("DOMAIN")
+IDENTIFIER = env.get("IDENTIFIER")
+validator = Auth0JWTBearerTokenValidator(
+    DOMAIN,
+    IDENTIFIER
+)
+require_auth.register_token_validator(validator)
 
 app = Flask(__name__)
 
 
 @app.route('/upload', methods=['POST'])
+@require_auth(None)
 def upload_image():
     try:
         print("Request data:", request.data)
@@ -43,6 +58,7 @@ def upload_image():
 
 
 @app.route('/gamestat', methods=['POST'])
+@require_auth(None)
 def gamestat():
     # Get the form data from the request
 

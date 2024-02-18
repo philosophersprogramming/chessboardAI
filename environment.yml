@@ -9,4 +9,6 @@ dependencies:
   - ultralytics
   - pip: 
       - flask==3.0.1
+      - chess==1.10.0
+
 

@@ -1,0 +1,9 @@
+chess
+flask
+authlibpython-dotenv
+torchaudio
+torchvision
+torch
+ultralytics
+onnx
+onnxruntime

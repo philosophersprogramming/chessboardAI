@@ -29,4 +29,4 @@ def grayscale_folder(path, outpath):
         grayscaleImg(f"{path}/{image_file}", f"{outpath}/{image_file}")
 
 if __name__ == "__main__":
-    grayscale_folder("../images", "images")
+    grayscale_folder("/Users/akash/Source/chessAI/Chess-datasets/Dataset 5/Black-Pieces", "/Users/akash/Source/chessAI/graychess/black")

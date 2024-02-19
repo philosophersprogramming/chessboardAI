@@ -40,15 +40,8 @@ def crop(file):
             mask = np.zeros(cropped.shape[:2], np.uint8)
             cv2.drawContours(mask, [pts], -1, (255, 255, 255), -1, cv2.LINE_AA)
 
-            gray = cv2.cvtColor(cropped,cv2.COLOR_BGR2GRAY)
 
-            # blur
-            smooth = cv2.GaussianBlur(gray, (95,95), 0)
-
-            # divide gray by morphology image
-            division = cv2.divide(gray, smooth, scale=192)
-
-            cv2.imwrite("cropped.png", division)
+            cv2.imwrite("cropped.png", cropped)
         else:
             print("Error: Not enough points for bounding rectangle.")
     else:

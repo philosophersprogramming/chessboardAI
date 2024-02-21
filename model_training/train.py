@@ -1,9 +1,8 @@
 from ultralytics import YOLO
+import comet_ml
 
-model = YOLO('yolov8n.pt')
-model.train(data="/Users/akash/Source/chessAI/Chessboard_Recognition/Chessboardseg/data.yaml", epochs=50,  imgsz=640, batch =-1) # add device device='mps for apple silicon devices and remove batch=-1 on apple silicon 
-# get the dataset from https://universe.roboflow.com/steven-lt9bf/chessboard-segmentation
-metrics = model.val()
-results = model("/Users/akash/Source/chessAI/Chessboard_Recognition/images/Chessboard2.jpg", save=True)
-model.export(format='engine')
+comet_ml.init(project_name="chessboardai")
+model = YOLO('yolov8n-cls.pt')
+results = model.train(data="/Users/akash/Source/chessAI/train-dataset", epochs=50, imgsz=640, device='mps', project="chessboardai", save_period=1,
+save_json=True)
 

@@ -19,7 +19,7 @@ lc0.configure({"WeightsFile": LC0_WEIGHTS})
 def reset_board(isWhite):
     global board
     board = chess.Board()
-    if not isWhite:
+    if isWhite:
         result = lc0.play(board, chess.engine.Limit(time=0.1))
         best_move = result.move
         # Print the move played

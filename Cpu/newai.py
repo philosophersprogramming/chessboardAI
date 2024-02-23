@@ -13,11 +13,24 @@ lc0 = chess.engine.SimpleEngine.popen_uci(LC0_BINARY)
 
 # Set the Lc0 neural network weights
 lc0.configure({"WeightsFile": LC0_WEIGHTS})
-board = chess.Board()
+# board = chess.Board()
 
-def reset_board():
+# this is the color of the AI
+def reset_board(isWhite):
     global board
     board = chess.Board()
+    if not isWhite:
+        result = lc0.play(board, chess.engine.Limit(time=0.1))
+        best_move = result.move
+        # Print the move played
+        print("Lc0 plays:", best_move)
+
+        # Update the board
+        board.push(best_move)
+
+        # Close the Lc0 engine lc0.quit()
+        print(board)
+        received(str(best_move))
 
 
 def chessmove(move):

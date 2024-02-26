@@ -73,14 +73,18 @@ def gamestat():
         if os.path.exists(initial_array_path):
             os.remove(initial_array_path)
         if iswhite.upper() == 'TRUE':
-            reset_board(True)
+            value = reset_board(True)
+            print("AI playing as White")
+            return value
         else:
             reset_board(False)
+            print("Resetted board")
+            return "Resetted Board"
     # Do something with the form data (e.g., print it)
-    print("Resetted board")
+   
     
     # Return a response
-    return "Form data received successfully"
+    
 
 if __name__ == '__main__':
     initial_array_path = 'initial_array.pkl'

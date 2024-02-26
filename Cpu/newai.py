@@ -30,7 +30,7 @@ def reset_board(isWhite):
 
         # Close the Lc0 engine lc0.quit()
         print(board)
-        received(str(best_move))
+        return str(best_move)
 
 
 def chessmove(move):
@@ -49,3 +49,8 @@ def chessmove(move):
     print(board)
     received(str(best_move))
     return str(best_move)
+
+def ifover():
+    if (board.is_checkmate() or board.is_stalemate() or board.outcome() or board.can_claim_draw() or board.can_claim_threefold_repetition() or board.can_claim_fifty_moves() or board.is_insufficient_material() or board.is_fivefold_repetition() or board.is_seventyfive_moves()):
+        print("The game is over")
+        

@@ -65,12 +65,17 @@ def gamestat():
     # gameid = request.form.get('gameid', '')
     # Access specific form fields
     gamestats = request.form.get('reset', '')
+    iswhite = request.form.get('iswhite', '')
+
     
     if gamestats.upper() == 'TRUE': 
         print("RESETTING")
         if os.path.exists(initial_array_path):
             os.remove(initial_array_path)
-        reset_board()
+        if iswhite.upper() == 'TRUE':
+            reset_board(True)
+        else:
+            reset_board(False)
     # Do something with the form data (e.g., print it)
     print("Resetted board")
     

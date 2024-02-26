@@ -13,7 +13,7 @@ lc0 = chess.engine.SimpleEngine.popen_uci(LC0_BINARY)
 
 # Set the Lc0 neural network weights
 lc0.configure({"WeightsFile": LC0_WEIGHTS})
-# board = chess.Board()
+board = chess.Board()
 
 # this is the color of the AI
 def reset_board(isWhite):

@@ -3,6 +3,7 @@ from start import *
 import tempfile
 import os
 from os import environ as env
+from newai import cleanup
 
 from dotenv import load_dotenv, find_dotenv
 from authlib.integrations.flask_oauth2 import ResourceProtector
@@ -70,8 +71,6 @@ def gamestat():
     
     if gamestats.upper() == 'TRUE': 
         print("RESETTING")
-        if os.path.exists(initial_array_path):
-            os.remove(initial_array_path)
         if iswhite.upper() == 'TRUE':
             value = reset_board(True)
             print("AI playing as White")
@@ -87,7 +86,5 @@ def gamestat():
     
 
 if __name__ == '__main__':
-    initial_array_path = 'initial_array.pkl'
-    if os.path.exists(initial_array_path):
-        os.remove(initial_array_path)
+    cleanup()
     app.run(host='0.0.0.0', port=9081)

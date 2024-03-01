@@ -3,6 +3,10 @@ import chess.engine
 from received import *
 from dotenv import load_dotenv, find_dotenv
 from os import environ as env
+import pickle
+import os
+import shutil
+
 
 
 load_dotenv(find_dotenv())
@@ -21,6 +25,7 @@ board = chess.Board()
 def reset_board(isWhite):
     global board
     board = chess.Board()
+    cleanup()
     if isWhite:
         result = lc0.play(board, chess.engine.Limit(time=0.1))
         best_move = result.move
@@ -33,7 +38,9 @@ def reset_board(isWhite):
         received(str(best_move))
         # Close the Lc0 engine lc0.quit()
         print(board)
+        write_variable(2)
         return str(best_move)
+    write_variable(1)
 
 
 def chessmove(move):
@@ -56,3 +63,21 @@ def chessmove(move):
 def ifover():
     if (board.is_checkmate() or board.is_stalemate() or board.outcome() or board.can_claim_draw() or board.can_claim_threefold_repetition() or board.can_claim_fifty_moves() or board.is_insufficient_material() or board.is_fivefold_repetition() or board.is_seventyfive_moves()):
         print("The game is over")
+def cleanup():
+    if os.path.exists('AIcolor.pkl'):
+        os.remove('AIcolor.pkl')
+    if os.path.exists('out'):
+        shutil.rmtree('out')
+    if os.path.exists('cropped.png'):
+        os.remove('cropped.png')
+    if os.path.exists('Detected_Lines.png'):
+        os.remove('Detected_Lines.png')
+    if os.path.exists('initial_array.pkl'):
+        os.remove('initial_array.pkl')
+ 
+    
+    
+def write_variable(value):
+    filename = "AIcolor.pkl"
+    with open(filename, "wb") as file:
+        pickle.dump(value, file)   

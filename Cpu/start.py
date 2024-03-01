@@ -31,7 +31,8 @@ def start(file):
             [1, 1, 1, 1, 1, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1, 1]
         ]
-
+    color = read_variable()
+    print("the AI is playing" + str(color))
     # Create an instance of ChessArrayComparator
     # comparator = ChessArrayComparator(initial_array)
 
@@ -43,7 +44,7 @@ def start(file):
     print("Intial Array:")
     for row in initial_array:
         print(row)
-    move = findMove(initial_array, found, 1) #change to 2 if AI is playing black
+    move = findMove(initial_array, found, color) #change to 2 if AI is playing black
 
 
 
@@ -60,3 +61,15 @@ def start(file):
     output = "It took " + str(end - start) + " to finish. " + "The output saved in " + output_folder + " moves that occurred " + move
     print(output)
     return chessai
+
+def read_variable():
+    filename = "AIcolor.pkl"
+    try:
+        if os.path.exists(filename):
+            with open(filename, "rb") as file:
+                return pickle.load(file)
+        else:
+            return None
+    except (IOError, EOFError, pickle.PickleError) as e:
+        print("Error reading variable:", e)
+        return None

@@ -5,14 +5,6 @@ from pieces import *
 from compute import *
 from newai import *
 import pickle
-def parse_strings(input_string, strings_to_exclude):
-    for s in strings_to_exclude:
-        input_string = input_string.replace(s, '')
-
-    # Remove all spaces
-    input_string = input_string.replace(' ', '')
-
-    return input_string
 def start(file):
     start = time.time()
     crop(file)
@@ -48,9 +40,10 @@ def start(file):
     #     turn = 1
     # else:
     #     turn = 2
-    print(initial_array)
-    print(found)
-    move = findMove(initial_array, found, 1)
+    print("Intial Array:")
+    for row in initial_array:
+        print(row)
+    move = findMove(initial_array, found, 1) #change to 2 if AI is playing black
 
 
 

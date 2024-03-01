@@ -30,6 +30,7 @@ def reset_board(isWhite):
         # Update the board
         board.push(best_move)
 
+        received(str(best_move))
         # Close the Lc0 engine lc0.quit()
         print(board)
         return str(best_move)

@@ -16,19 +16,16 @@ def findMove(curBoard, newBoard, turn):
         # check for white castling
         if turn == 2:
             if differences == [(0, 4), (0, 5), (0, 6), (0, 7)]:
-                print("used 3")
                 return "o-o"
             elif differences == [(0, 0), (0, 2), (0, 3), (0, 4)]:
-                print("used 4")
                 return "o-o-o"
             else:
                 "bad chess ai beta needs spanking toNIGHT"
         else:
             if differences == [(7, 4), (7, 5), (7, 6), (7, 7)]:
-                print("used 2")
                 return "O-O"
             elif differences == [(7, 0), (7, 2), (7, 3), (7, 4)]:
-                print("used 1")
+
                 return "O-O-O"
             else:
                 "bad chess ai beta needs spanking toNIGHT"

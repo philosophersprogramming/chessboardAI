@@ -19,11 +19,18 @@ def received(move):
 
     def make_move(chessboard, move):
         # Determine the color of the piece
-        piece_value = 0  # Default value for empty square
-        if move.isupper():
-            piece_value = 1  # White piece
-        elif move.islower():
-            piece_value = 2  # Black piece
+        from_row, from_col, to_row, to_col = 8 - int(move[1]), ord(move[0]) - ord('a'), 8 - int(move[3]), ord(move[2]) - ord('a')
+
+    # Determine the color of the piece
+        piece_value = chessboard[from_row][from_col]
+
+        if piece_value == 0:
+            print("No piece found at the starting position.")
+            return
+        elif piece_value == 1:
+            print("White piece moved.")
+        elif piece_value == 2:
+            print("Black piece moved.")
 
         # Check if it's a castling move
         if move.lower() == "o-o":
@@ -75,3 +82,4 @@ def received(move):
         pickle.dump(initial_array, initial_file)
 
 
+# received("e2e4")

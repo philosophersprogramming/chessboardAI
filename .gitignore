@@ -17,3 +17,4 @@ final_algorithm/__pycache__/crop.cpython-311.pyc
 .env
 **initial_array.pkl
 .DS_Store
+pyrightconfig.json

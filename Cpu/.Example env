@@ -1,2 +1,5 @@
 DOMAIN=
 IDENTIFIER=
+
+LC0_BINARY="/opt/homebrew/bin/lc0"
+LC0_WEIGHTS="/Users/person/Source/maia-chess/maia_weights/maia-1100.pb.gz"

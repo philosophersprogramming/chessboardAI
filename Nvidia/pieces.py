@@ -1,12 +1,14 @@
 from ultralytics import YOLO
 import os
 import tensorrt
+import time
 
 print(tensorrt.__version__)
 assert tensorrt.Builder(tensorrt.Logger())
 
 model = YOLO('weights/piece/best.engine', task='classify')
 def pieces(path):
+    start = time.time()
 # Load a pretrained YOLOv8n model
     
 
@@ -45,6 +47,8 @@ def pieces(path):
     print("Pieces Array:")
     for row in pieces_array:
         print(row)
+    end = time.time()
+    print("It took", end - start, "seconds")
     
     return pieces_array
    
@@ -62,3 +66,4 @@ def extract_row_col_from_filename(filename):
 
     return row, col
 
+pieces('out')

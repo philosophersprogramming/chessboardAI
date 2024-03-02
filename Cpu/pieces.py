@@ -1,8 +1,10 @@
 from ultralytics import YOLO
 import os
+import time
 
 model = YOLO('weights/pieces/v6/best.pt')
 def pieces(path):
+    start = time.time()
 # Load a pretrained YOLOv8n model
     
 
@@ -41,7 +43,8 @@ def pieces(path):
     print("Pieces Array:")
     for row in pieces_array:
         print(row)
-    
+    end = time.time()
+    print("It took" + str(end - start))
     return pieces_array
    
 def extract_row_col_from_filename(filename):
@@ -58,3 +61,4 @@ def extract_row_col_from_filename(filename):
 
     return row, col
 
+pieces('out')

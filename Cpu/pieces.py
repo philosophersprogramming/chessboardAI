@@ -61,4 +61,3 @@ def extract_row_col_from_filename(filename):
 
     return row, col
 
-pieces('out')

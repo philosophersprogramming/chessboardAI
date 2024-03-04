@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-model = YOLO('best.pt')
+model = YOLO('/home/akash/chessboard/Cpu/weights/pieces/v6/best.pt')
 
 model.export(format='engine')
 

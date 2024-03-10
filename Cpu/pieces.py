@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import os
 import time
 
-model = YOLO('weights/pieces/v6/best.pt')
+model = YOLO('weights/pieces/v7/best.pt')
 def pieces(path):
     start = time.time()
 # Load a pretrained YOLOv8n model

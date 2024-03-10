@@ -35,7 +35,8 @@ def reset_board(isWhite):
         # Update the board
         board.push(best_move)
 
-        received(str(best_move))
+        received(board.fen())
+        print("fen: " + board.fen())
         # Close the Lc0 engine lc0.quit()
         print(board)
         write_variable(2)
@@ -57,7 +58,8 @@ def chessmove(move):
 
     # Close the Lc0 engine lc0.quit()
     print(board)
-    received(str(best_move))
+    received(board.fen())
+    print("fenstring: " + board.fen())
     return str(best_move)
 
 def ifover():

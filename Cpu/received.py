@@ -77,12 +77,16 @@ def received(fen):
     position_fen = fen.split(" ")[0].split("/")
 
     for row in range(len(position_fen)):
+        offset = 0
         for col in range(len(position_fen[row])):
-            offset = 0
             if position_fen[row][col].isnumeric():
-                offset += int(position_fen[row][col])
+                offset += int(position_fen[row][col]) - 1
+                print("offset")
                 print(int(position_fen[row][col]))
             else:
+                if(offset > 0):
+                    print("hallo")
+                    print(col + offset)
                 if position_fen[row][col].isupper():
                     board[row][col + offset] = 1
                 else:
@@ -98,7 +102,7 @@ def received(fen):
         pickle.dump(board, initial_file)
 
 
-received("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
+received("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1")
 
 #chat gpt stuff below that Akash was trying out! ( it works when your not loading the board from the pickle file )
 # def received(fen):   

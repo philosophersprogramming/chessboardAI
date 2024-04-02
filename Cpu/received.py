@@ -102,7 +102,7 @@ def received(fen):
         pickle.dump(board, initial_file)
 
 
-received("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1")
+# received("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1")
 
 #chat gpt stuff below that Akash was trying out! ( it works when your not loading the board from the pickle file )
 # def received(fen):   

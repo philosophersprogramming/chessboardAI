@@ -6,24 +6,15 @@ from os import environ as env
 from newai import cleanup
 
 from dotenv import load_dotenv, find_dotenv
-from authlib.integrations.flask_oauth2 import ResourceProtector
-from validator import Auth0JWTBearerTokenValidator
 
-require_auth = ResourceProtector()
-load_dotenv(find_dotenv())
-DOMAIN = env.get("DOMAIN")
-IDENTIFIER = env.get("IDENTIFIER")
-validator = Auth0JWTBearerTokenValidator(
-    DOMAIN,
-    IDENTIFIER
-)
-require_auth.register_token_validator(validator)
+
+
 
 app = Flask(__name__)
 
 
 @app.route('/upload', methods=['POST'])
-@require_auth(None) # comment out this to disable the authenication with oauth for testing
+
 def upload_image():
     try:
         print("Request data:", request.data)

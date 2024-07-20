@@ -40,6 +40,9 @@ def pieces(path):
             if (probs == 1) :
                  pieces_array[7 - row][col] = 0 
                  print("blank square")
+            print("Progress ....")
+            for r in pieces_array:
+                print(r)
     print("Pieces Array:")
     for row in pieces_array:
         print(row)

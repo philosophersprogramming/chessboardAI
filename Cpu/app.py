@@ -50,7 +50,7 @@ def upload_image():
 
 
 @app.route('/gamestat', methods=['POST'])
-@require_auth(None) # comment out this to disable the authenication with oauth for testing
+
 def gamestat():
     # Get the form data from the request
 
